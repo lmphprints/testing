@@ -15,13 +15,19 @@ function calculateTotal() {
   let selectedSize = size.value;
 
   // Base price
-  if (selectedSize == "1") {
-    price = qty >= 200 ? 9 : qty >= 100 ? 9.5 : 10;
-  } else if (selectedSize == "1.75") {
-    price = qty >= 200 ? 9 : qty >= 100 ? 9.5 : 10;
-  } else if (selectedSize == "2.25") {
-    price = qty >= 200 ? 10 : qty >= 100 ? 12 : qty >= 50 ? 13 : qty >= 20 ? 14 : 15;
+  if (selectedSize == "1" || selectedSize == "1.75") {
+  if (qty < 10) {
+    totalDisplay.innerText = "0.00";
+    alert("Minimum of 10 pieces required for this size.");
+    return;
   }
+
+  price = qty >= 200 ? 9 : qty >= 100 ? 9.5 : 10;
+
+} else if (selectedSize == "2.25") {
+  price = qty >= 200 ? 10 : qty >= 100 ? 12 : qty >= 50 ? 13 : qty >= 20 ? 14 : 15;
+}
+
 
   let total = price * qty;
 
