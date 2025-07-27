@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LMPH Prints</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="LMPH Prints Logo" class="logo">
+    <div class="cart">
+      <span id="cart-count">0</span> 🛒
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Welcome to LMPH Prints</h1>
+      <p>Your One-Stop Print Shop in Carmona, Cavite</p>
+      <a href="#products" class="shop-button">Shop Now</a>
+    </section>
+
+    <section id="products" class="products">
+      <div class="product-card">
+        <img src="button-pin.png" alt="Customized Button Pin" />
+        <h2>Customized Button Pin</h2>
+        <label for="size">Size:</label>
+        <select id="size">
+          <option value="1">1” - ₱10</option>
+          <option value="1.75">1.75” - ₱10</option>
+          <option value="2.25">2.25” - ₱15</option>
+        </select>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" value="1" min="1" />
+        
+        <div class="addons">
+          <p>Add-ons:</p>
+          <label><input type="checkbox" value="6" /> Backing + Plastic (₱6)</label><br />
+          <label><input type="checkbox" value="5" /> Magnet (₱5)</label><br />
+          <label><input type="checkbox" value="0" data-tax="8" /> OR (₱0, 8% tax)</label>
+        </div>
+
+        <p>Total: ₱<span id="total">10</span></p>
+        <button onclick="addToCart()">Add to Cart</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
