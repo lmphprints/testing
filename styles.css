@@ -63,6 +63,7 @@ button:hover {
   transform: scale(1.05);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
+
 label {
   display: block;
   margin-top: 16px;
@@ -89,8 +90,18 @@ input[type="number"]:focus {
   border-color: #000;
 }
 
+.addons {
+  margin-top: 16px;
+  font-size: 14px;
+}
 
-button:active {
-  transform: scale(0.98);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+.addons p {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.addons label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: normal;
 }
