@@ -1,4 +1,3 @@
-
 function addToCart() {
   let count = parseInt(document.getElementById("cart-count").innerText);
   document.getElementById("cart-count").innerText = count + 1;
@@ -13,21 +12,19 @@ function calculateTotal() {
   const qty = parseInt(quantity.value) || 0;
   let price = 0;
   let selectedSize = size.value;
+  let errorMessage = '';
 
-  // Base price
+  // Base pricing with 10-piece minimum for 1" and 1.75"
   if (selectedSize == "1" || selectedSize == "1.75") {
-  if (qty < 10) {
-    totalDisplay.innerText = "0.00";
-    alert("Minimum of 10 pieces required for this size.");
-    return;
+    if (qty < 10) {
+      errorMessage = "⚠️ Minimum of 10 pieces required for this size.";
+      totalDisplay.innerText = "0.00";
+      return showWarning(errorMessage);
+    }
+    price = qty >= 200 ? 9 : qty >= 100 ? 9.5 : 10;
+  } else if (selectedSize == "2.25") {
+    price = qty >= 200 ? 10 : qty >= 100 ? 12 : qty >= 50 ? 13 : qty >= 20 ? 14 : 15;
   }
-
-  price = qty >= 200 ? 9 : qty >= 100 ? 9.5 : 10;
-
-} else if (selectedSize == "2.25") {
-  price = qty >= 200 ? 10 : qty >= 100 ? 12 : qty >= 50 ? 13 : qty >= 20 ? 14 : 15;
-}
-
 
   let total = price * qty;
 
@@ -42,12 +39,3 @@ function calculateTotal() {
       }
     }
   });
-
-  totalDisplay.innerText = total.toFixed(2);
-}
-
-size.addEventListener("change", calculateTotal);
-quantity.addEventListener("input", calculateTotal);
-addons.forEach(a => a.addEventListener("change", calculateTotal));
-
-calculateTotal();
